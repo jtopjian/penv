@@ -33,9 +33,11 @@ deactivate () {
         unset _OLD_VIRTUAL_PATH
     fi
 
-    unset MODULEBUILDRC
-    unset PERL_MM_OPT
     unset PERL5LIB
+    unset PERL_LOCAL_LIB_ROOT
+    unset MODULEBUILDRC
+    unset PERL_MB_OPT
+    unset PERL_MM_OPT
 
     # This should detect bash and zsh, which have a hash command that must
     # be called to get it to forget past commands.  Without forgetting
@@ -57,7 +59,7 @@ deactivate () {
     fi
 }
 
-# unset irrelavent variables
+# unset irrelevant variables
 deactivate nondestructive
 
 VIRTUAL_ENV="{{ PENV }}"
@@ -85,4 +87,4 @@ fi
 if [ -n "$BASH" -o -n "$ZSH_VERSION" ] ; then
     hash -r
 fi
-eval $(perl -I{{ PENV }}/perl5/lib/perl5 -Mlocal::lib={{ PENV }})
+eval $(perl -I${HOME}/perl5/lib/perl5 -Mlocal::lib={{ PENV }})
