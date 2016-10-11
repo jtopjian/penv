@@ -59,6 +59,9 @@ deactivate () {
     fi
 }
 
+# fail fast if local::lib is missing
+perl -I${HOME}/perl5/lib/perl5 -Mlocal::lib -e ';' || return 1
+
 # unset irrelevant variables
 deactivate nondestructive
 
